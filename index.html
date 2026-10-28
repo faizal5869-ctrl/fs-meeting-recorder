@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111111">
+<title>FS Meeting Recorder</title>
+<link rel="manifest" href="manifest.json">
+<style>
+:root{font-family:Arial,sans-serif;color:#181818;background:#f4f4f4}*{box-sizing:border-box}body{margin:0}header{background:#111;color:#fff;padding:20px 16px}header h1{margin:0;font-size:22px}header p{margin:6px 0 0;color:#ddd;font-size:13px}.wrap{max-width:800px;margin:auto;padding:14px}.panel{background:#fff;border-radius:14px;padding:16px;margin:0 0 14px;box-shadow:0 2px 8px #0000000c}h2{font-size:17px;margin:0 0 12px}label{display:block;font-size:13px;font-weight:bold;margin:10px 0 5px}input,textarea,select{width:100%;padding:11px;border:1px solid #ccc;border-radius:9px;font:inherit;background:#fff}textarea{min-height:90px;resize:vertical}button{border:0;border-radius:9px;padding:11px 13px;background:#111;color:white;font-weight:bold;cursor:pointer;margin:5px 5px 0 0}button.secondary{background:#e9e9e9;color:#111}button.danger{background:#a82020}.row{display:flex;gap:8px;flex-wrap:wrap}.row>*{flex:1}.muted{font-size:12px;color:#666}.item{border:1px solid #ddd;border-radius:10px;padding:12px;margin-top:9px}.item h3{margin:0 0 6px;font-size:15px}.item p{white-space:pre-wrap;margin:5px 0;font-size:14px}.task{display:flex;gap:8px;align-items:flex-start}.task input{width:auto;margin-top:3px}.hidden{display:none}.status{font-size:13px;margin-top:8px;color:#444}audio{width:100%;margin-top:8px}footer{text-align:center;color:#666;font-size:12px;padding:15px}
+</style>
+</head>
+<body>
+<header><h1>FS Meeting Recorder</h1><p>Rekod audio • Nota mesyuarat • Minit • Tindakan susulan</p></header>
+<main class="wrap">
+<section class="panel">
+<h2>Mesyuarat baharu</h2>
+<label for="meetingTitle">Tajuk mesyuarat</label><input id="meetingTitle" placeholder="Contoh: Mesyuarat Unit Media">
+<div class="row"><div><label for="meetingDate">Tarikh</label><input id="meetingDate" type="date"></div><div><label for="meetingAttendees">Kehadiran</label><input id="meetingAttendees" placeholder="Nama peserta"></div></div>
+<label for="meetingNotes">Nota / minit mesyuarat</label><textarea id="meetingNotes" placeholder="Agenda, keputusan, perkara penting..."></textarea>
+<label for="meetingTasks">Tindakan susulan (satu tugasan setiap baris)</label><textarea id="meetingTasks" placeholder="Contoh: Faizal siapkan poster sebelum Jumaat"></textarea>
+<div class="row"><button id="startRec">● Mula rakam audio</button><button id="stopRec" class="secondary" disabled>Hentikan rakaman</button></div>
+<div id="recStatus" class="status">Rakaman belum dimulakan.</div><div id="audioPreview"></div>
+<div class="row"><button id="saveMeeting">Simpan mesyuarat</button><button id="clearForm" class="secondary">Kosongkan borang</button></div>
+<p class="muted">Data disimpan dalam storan pelayar pada peranti ini. Benarkan akses mikrofon jika diminta. Rakaman audio memerlukan sambungan HTTPS atau localhost; ciri ini mungkin tidak berfungsi jika halaman dibuka terus sebagai fail.</p>
+</section>
+<section class="panel">
+<div class="row" style="align-items:center"><h2 style="flex:2">Arkib mesyuarat</h2><button id="exportAll" class="secondary">Eksport semua data</button></div>
+<label for="search">Cari mesyuarat</label><input id="search" placeholder="Cari tajuk, nota atau tugasan...">
+<div id="archive"></div>
+</section>
+</main>
+<footer>FS Meeting Recorder • Versi percubaan percuma • Data kekal pada peranti/pelayar ini</footer>
+<script src="app.js"></script>
+</body>
+</html>
